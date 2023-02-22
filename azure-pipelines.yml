@@ -15,12 +15,6 @@ variables:
 stages:
 - stage: CI
   jobs:
-  - job: CPSpectral
-    steps:
-    - script: curl -L 'https://spectral-eu.checkpoint.com/latest/x/sh?dsn=$(SPECTRAL_DSN)' | sh
-      displayName: 'Install Spectral'
-    - script: $HOME/.spectral/spectral scan --ok --dsn $(SPECTRAL_DSN)  --include-tags base,audit3,iac
-      displayName: 'Spectral Scan'
   - job: Build
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
